@@ -1,0 +1,58 @@
+
+# 1 "display.c"
+
+# 16 "segment.h"
+void NumDisplay(char Number, unsigned char Segment );
+
+# 28
+void Segment_init(unsigned char Segment);
+
+# 37
+void DisplayValue(char Number);
+
+# 14 "delay.h"
+void delay_ms(unsigned char t);
+
+# 24
+void Delay_s(unsigned char t);
+
+# 32
+void Delay_s_(void);
+
+# 16 "display.c"
+void Float_digit(unsigned char *arr, float b)
+{
+float f;
+int d;
+d = b;
+*arr = (d/10);
+arr++;
+*arr = (d%10);
+f = b-d;
+d = f*100;
+arr++;
+*arr = (d/10);
+arr++;
+*arr = (d%10);
+}
+
+
+
+void Display(float val)
+{
+int x = 0;
+unsigned char array[5] = {1,2,3,4};
+Float_digit(array, val);
+while(x<=30)
+{
+NumDisplay(array[3], 1);
+Delay_s_();
+NumDisplay(array[2], 2);
+Delay_s_();
+NumDisplay(array[1], 3);
+Delay_s_();
+NumDisplay(array[0], 4);
+Delay_s_();
+x++;
+}
+}

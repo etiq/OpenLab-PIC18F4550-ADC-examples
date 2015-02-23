@@ -1,0 +1,139 @@
+Version 3.2 HI-TECH Software Intermediate Code
+"16 segment.h
+[v _NumDisplay `(v ~T0 @X0 0 ef2`uc`uc ]
+"32 delay.h
+[v _Delay_s_ `(v ~T0 @X0 0 ef ]
+[; ;segment.h: 16: void NumDisplay(char Number, unsigned char Segment );
+[; ;segment.h: 28: void Segment_init(unsigned char Segment);
+[; ;segment.h: 37: void DisplayValue(char Number);
+[; ;delay.h: 14: void delay_ms(unsigned char t);
+[; ;delay.h: 24: void Delay_s(unsigned char t);
+[; ;delay.h: 32: void Delay_s_(void);
+"16 display.c
+[v _Float_digit `(v ~T0 @X0 1 ef2`*uc`f ]
+"17
+{
+[; ;display.c: 16: void Float_digit(unsigned char *arr, float b)
+[; ;display.c: 17: {
+[e :U _Float_digit ]
+"16
+[v _arr `*uc ~T0 @X0 1 r1 ]
+[v _b `f ~T0 @X0 1 r2 ]
+"17
+[f ]
+"18
+[v _f `f ~T0 @X0 1 a ]
+"19
+[v _d `i ~T0 @X0 1 a ]
+[; ;display.c: 18: float f;
+[; ;display.c: 19: int d;
+[; ;display.c: 20: d = b;
+"20
+[e = _d -> _b `i ]
+[; ;display.c: 21: *arr = (d/10);
+"21
+[e = *U _arr -> / _d -> 10 `i `uc ]
+[; ;display.c: 22: arr++;
+"22
+[e ++ _arr * -> -> 1 `i `x -> -> # *U _arr `i `x ]
+[; ;display.c: 23: *arr = (d%10);
+"23
+[e = *U _arr -> % _d -> 10 `i `uc ]
+[; ;display.c: 24: f = b-d;
+"24
+[e = _f - _b -> _d `f ]
+[; ;display.c: 25: d = f*100;
+"25
+[e = _d -> * _f -> -> 100 `i `f `i ]
+[; ;display.c: 26: arr++;
+"26
+[e ++ _arr * -> -> 1 `i `x -> -> # *U _arr `i `x ]
+[; ;display.c: 27: *arr = (d/10);
+"27
+[e = *U _arr -> / _d -> 10 `i `uc ]
+[; ;display.c: 28: arr++;
+"28
+[e ++ _arr * -> -> 1 `i `x -> -> # *U _arr `i `x ]
+[; ;display.c: 29: *arr = (d%10);
+"29
+[e = *U _arr -> % _d -> 10 `i `uc ]
+[; ;display.c: 30: }
+"30
+[e :UE 1 ]
+}
+"34
+[v _Display `(v ~T0 @X0 1 ef1`f ]
+"35
+{
+[; ;display.c: 34: void Display(float val)
+[; ;display.c: 35: {
+[e :U _Display ]
+"34
+[v _val `f ~T0 @X0 1 r1 ]
+"35
+[f ]
+"36
+[v _x `i ~T0 @X0 1 a ]
+[; ;display.c: 36: int x = 0;
+[e = _x -> 0 `i ]
+[v F23 `uc ~T0 @X0 -> 5 `i s ]
+[i F23
+:U ..
+"37
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+..
+]
+[v _array `uc ~T0 @X0 -> 5 `i a ]
+[; ;display.c: 37: unsigned char array[5] = {1,2,3,4};
+[e = _array F23 ]
+[; ;display.c: 38: Float_digit(array, val);
+"38
+[e ( _Float_digit (2 , &U _array _val ]
+[; ;display.c: 39: while(x<=30)
+"39
+[e $U 3  ]
+[e :U 4 ]
+[; ;display.c: 40: {
+"40
+{
+[; ;display.c: 41: NumDisplay(array[3], 1);
+"41
+[e ( _NumDisplay (2 , *U + &U _array * -> -> -> 3 `i `ui `ux -> -> # *U &U _array `ui `ux -> -> 1 `i `uc ]
+[; ;display.c: 42: Delay_s_();
+"42
+[e ( _Delay_s_ ..  ]
+[; ;display.c: 43: NumDisplay(array[2], 2);
+"43
+[e ( _NumDisplay (2 , *U + &U _array * -> -> -> 2 `i `ui `ux -> -> # *U &U _array `ui `ux -> -> 2 `i `uc ]
+[; ;display.c: 44: Delay_s_();
+"44
+[e ( _Delay_s_ ..  ]
+[; ;display.c: 45: NumDisplay(array[1], 3);
+"45
+[e ( _NumDisplay (2 , *U + &U _array * -> -> -> 1 `i `ui `ux -> -> # *U &U _array `ui `ux -> -> 3 `i `uc ]
+[; ;display.c: 46: Delay_s_();
+"46
+[e ( _Delay_s_ ..  ]
+[; ;display.c: 47: NumDisplay(array[0], 4);
+"47
+[e ( _NumDisplay (2 , *U + &U _array * -> -> -> 0 `i `ui `ux -> -> # *U &U _array `ui `ux -> -> 4 `i `uc ]
+[; ;display.c: 48: Delay_s_();
+"48
+[e ( _Delay_s_ ..  ]
+[; ;display.c: 49: x++;
+"49
+[e ++ _x -> 1 `i ]
+"50
+}
+[e :U 3 ]
+"39
+[e $ <= _x -> 30 `i 4  ]
+[e :U 5 ]
+[; ;display.c: 50: }
+[; ;display.c: 51: }
+"51
+[e :UE 2 ]
+}

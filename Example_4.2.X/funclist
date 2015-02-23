@@ -1,0 +1,24 @@
+___ftneg: CODE, 30026 0 38
+_Segment_init: CODE, 30234 0 84
+___awdiv: CODE, 30810 0 164
+___ftpack: CODE, 30974 0 168
+___awmod: CODE, 30666 0 144
+_main: CODE, 30064 0 48
+_BusyADC: CODE, 29960 0 12
+___ftadd: CODE, 32340 0 428
+_ConvertADC: CODE, 29930 0 4
+__initialization: CODE, 30112 0 40
+_ReadADC: CODE, 29950 0 10
+_Delay_s_: CODE, 29934 0 8
+_NumDisplay: CODE, 29994 0 32
+_Delay10KTCYx: CODE, 29972 0 22
+_Float_digit: CODE, 32022 0 318
+_ADC_Value: CODE, 30412 0 124
+___ftmul: CODE, 31794 0 228
+_OpenADC: CODE, 30318 0 94
+_Display: CODE, 30536 0 130
+___awtoft: CODE, 30162 0 72
+_DisplayValue: CODE, 31568 0 226
+___fttol: CODE, 31142 0 212
+___ftdiv: CODE, 31354 0 214
+Total: 2820
